@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="33b92c33-7e67-4044-9a62-f7c77043983b" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/ArduinoHandler.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="458">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
+              <folding>
+                <marker date="1579711410246" expanded="true" signature="6:165" ph="..." />
+                <marker date="1579711410246" expanded="true" signature="167:429" ph="/* Packet format: ... */" />
+                <marker date="1579711410246" expanded="true" signature="458:618" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="558:616" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="739:7801" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="1831:2101" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="2196:2289" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="2352:2522" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="2394:2516" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="2533:2721" ph="/// Sends a packet to the arduino. ... " />
+                <marker date="1579711410246" expanded="true" signature="2766:3683" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="3690:3872" ph="/// Sends a packet to the arduino. ... " />
+                <marker date="1579711410246" expanded="true" signature="3915:3968" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="3979:4121" ph="/// Checks if any packets have been received. ... " />
+                <marker date="1579711410246" expanded="true" signature="4157:4202" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="4209:4342" ph="/// Gets the oldest Packet from the Queue. ... " />
+                <marker date="1579711410246" expanded="true" signature="4388:4651" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="4430:4565" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="4578:4645" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="4658:4756" ph="/// Threaded function. Loops and checks for incoming packets. ... " />
+                <marker date="1579711410246" expanded="true" signature="4795:7799" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="4813:7637" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="4956:7627" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="5014:7613" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="5133:5310" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="5343:7162" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="6213:6429" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="6626:6839" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="7187:7595" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="7266:7421" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="7450:7573" ph="{...}" />
+                <marker date="1579711410246" expanded="true" signature="7677:7793" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/EventExample.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+              <folding>
+                <marker date="1579708362007" expanded="true" signature="6:104" ph="..." />
+                <marker date="1579708362007" expanded="true" signature="147:514" ph="{...}" />
+                <marker date="1579708362007" expanded="true" signature="193:316" ph="{...}" />
+                <marker date="1579708362007" expanded="true" signature="335:450" ph="{...}" />
+                <marker date="1579708362007" expanded="true" signature="392:444" ph="{...}" />
+                <marker date="1579708362007" expanded="true" signature="467:506" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/TestStuff.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+              <folding>
+                <marker date="1579711096871" expanded="true" signature="6:176" ph="..." />
+                <marker date="1579711096871" expanded="true" signature="218:1568" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="376:522" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="470:516" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="593:614" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="672:915" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="723:909" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="968:1107" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="1022:1101" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="1169:1372" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="1278:1344" ph="{...}" />
+                <marker date="1579711096871" expanded="true" signature="1424:1566" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/Crc16.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+              <folding>
+                <marker date="1579704257058" expanded="true" signature="45:984" ph="{...}" />
+                <marker date="1579704257058" expanded="true" signature="195:422" ph="{...}" />
+                <marker date="1579704257058" expanded="true" signature="272:396" ph="{...}" />
+                <marker date="1579704257058" expanded="true" signature="442:982" ph="{...}" />
+                <marker date="1579704257058" expanded="true" signature="541:976" ph="{...}" />
+                <marker date="1579704257058" expanded="true" signature="637:936" ph="{...}" />
+                <marker date="1579704257058" expanded="true" signature="703:804" ph="{...}" />
+                <marker date="1579704257058" expanded="true" signature="825:894" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/COBS.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="83" />
+              <folding>
+                <marker date="1579643153000" expanded="true" signature="19:1829" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="105:896" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="250:820" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="300:474" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="491:810" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="631:796" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="988:1674" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="1168:1640" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="1278:1332" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="1396:1498" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="1550:1630" ph="{...}" />
+                <marker date="1579643153000" expanded="true" signature="1747:1827" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bits_read</find>
+      <find>int i</find>
+    </findStrings>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/ArduinoComm/EventExample.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArduinoComm/TestStuff.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArduinoComm/Utils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArduinoComm/Crc16.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArduinoComm/ArduinoHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArduinoComm/SLIP.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArduinoComm/COBS.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/SLIP.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/COBS.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/CRC.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/Crc16.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/EventExample.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/TestStuff.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/SomeEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArduinoComm/ArduinoHandler.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="960" />
+    <option name="height" value="1133" />
+  </component>
+  <component name="ProjectId" id="1Wih4NwpViKJsRzdNrs7yr2xqqb" />
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="ArduinoComm" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+        <option name="show-project-names" value="true" />
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33b92c33-7e67-4044-9a62-f7c77043983b" name="Default Changelist" comment="" />
+      <created>1579638134343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579638134343</updated>
+      <workItem from="1579638151377" duration="1611000" />
+      <workItem from="1579639879904" duration="5133000" />
+      <workItem from="1579693179799" duration="1649000" />
+      <workItem from="1579696139986" duration="9736000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11385000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="960" height="1133" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17102396" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Unity" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/CRC.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="19" selection-end-line="41" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/COBS.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="83" />
+          <folding>
+            <marker date="1579643153000" expanded="true" signature="19:1829" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="105:896" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="250:820" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="300:474" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="491:810" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="631:796" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="988:1674" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="1168:1640" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="1278:1332" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="1396:1498" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="1550:1630" ph="{...}" />
+            <marker date="1579643153000" expanded="true" signature="1747:1827" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/Crc16.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <marker date="1579704257058" expanded="true" signature="45:984" ph="{...}" />
+            <marker date="1579704257058" expanded="true" signature="195:422" ph="{...}" />
+            <marker date="1579704257058" expanded="true" signature="272:396" ph="{...}" />
+            <marker date="1579704257058" expanded="true" signature="442:982" ph="{...}" />
+            <marker date="1579704257058" expanded="true" signature="541:976" ph="{...}" />
+            <marker date="1579704257058" expanded="true" signature="637:936" ph="{...}" />
+            <marker date="1579704257058" expanded="true" signature="703:804" ph="{...}" />
+            <marker date="1579704257058" expanded="true" signature="825:894" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/EventExample.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding>
+            <marker date="1579708362007" expanded="true" signature="6:104" ph="..." />
+            <marker date="1579708362007" expanded="true" signature="147:514" ph="{...}" />
+            <marker date="1579708362007" expanded="true" signature="193:316" ph="{...}" />
+            <marker date="1579708362007" expanded="true" signature="335:450" ph="{...}" />
+            <marker date="1579708362007" expanded="true" signature="392:444" ph="{...}" />
+            <marker date="1579708362007" expanded="true" signature="467:506" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/SomeEditor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/TestStuff.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <folding>
+            <marker date="1579711096871" expanded="true" signature="6:176" ph="..." />
+            <marker date="1579711096871" expanded="true" signature="218:1568" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="376:522" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="470:516" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="593:614" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="672:915" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="723:909" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="968:1107" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="1022:1101" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="1169:1372" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="1278:1344" ph="{...}" />
+            <marker date="1579711096871" expanded="true" signature="1424:1566" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ArduinoComm/ArduinoHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <marker date="1579711410246" expanded="true" signature="6:165" ph="..." />
+            <marker date="1579711410246" expanded="true" signature="167:429" ph="/* Packet format: ... */" />
+            <marker date="1579711410246" expanded="true" signature="458:618" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="558:616" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="739:7801" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="1831:2101" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="2196:2289" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="2352:2522" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="2394:2516" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="2533:2721" ph="/// Sends a packet to the arduino. ... " />
+            <marker date="1579711410246" expanded="true" signature="2766:3683" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="3690:3872" ph="/// Sends a packet to the arduino. ... " />
+            <marker date="1579711410246" expanded="true" signature="3915:3968" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="3979:4121" ph="/// Checks if any packets have been received. ... " />
+            <marker date="1579711410246" expanded="true" signature="4157:4202" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="4209:4342" ph="/// Gets the oldest Packet from the Queue. ... " />
+            <marker date="1579711410246" expanded="true" signature="4388:4651" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="4430:4565" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="4578:4645" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="4658:4756" ph="/// Threaded function. Loops and checks for incoming packets. ... " />
+            <marker date="1579711410246" expanded="true" signature="4795:7799" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="4813:7637" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="4956:7627" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="5014:7613" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="5133:5310" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="5343:7162" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="6213:6429" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="6626:6839" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="7187:7595" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="7266:7421" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="7450:7573" ph="{...}" />
+            <marker date="1579711410246" expanded="true" signature="7677:7793" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
