@@ -10,7 +10,7 @@ The package requires a ```System.IO.Ports``` implementation. You need to enable 
 
 ## Installation
 
-To install ArduinoComms to your project, download the ```.unitypackage``` file from the Releases page, then either drag and drop it into your unity project or go to **Assets > Import Package > Custom Package...** and navigate to the downloaded file. Import everything in the package to your project.
+To install ArduinoComms to your project, download the ```.unitypackage``` file from the [Releases] page, then either drag and drop it into your unity project or go to **Assets > Import Package > Custom Package...** and navigate to the downloaded file. Import everything in the package to your project.
 
 To change the compatibility level, navigate to **Edit > Project Settings > Player > Other Settings > Configuration > Api Compatibility Level** and change this setting to **.NET 4.x**
 
