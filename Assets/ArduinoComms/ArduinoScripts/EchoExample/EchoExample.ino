@@ -2,7 +2,7 @@
 #include "Crc16.h"
 
 #define BAUDRATE 115200             //Data Speed
-#define PACKET_SIZE 1024            // Input Packet size
+#define PACKET_SIZE 512            // Input Packet size
 #define HEADER_SIZE 6
 
 typedef union                       // Used for float to byte conversion
@@ -43,8 +43,6 @@ typedef union                       // Used for float to byte conversion
 int bytesReceived = 0;                        // number of bytes received
 const uint8_t packetMarker = (uint8_t) 0x00;  // packet marker
 uint8_t inputBuffer[PACKET_SIZE];             // buffer to store input
-uint8_t decodedBuffer[2 * PACKET_SIZE];       // buffer to decoded input
-uint8_t encodedBuffer[2 * PACKET_SIZE];       // buffer to encoded input
 Crc16 crc;                                    // CRC algorithm for checksum
 
 
@@ -244,6 +242,7 @@ void receive()
 void parseData()
 {
   // decode packet
+  uint8_t decodedBuffer[bytesReceived+5];       // buffer to decoded input
   int decodedPacketSize = COBS::decode(inputBuffer, bytesReceived, decodedBuffer);
 
   // disect packt
@@ -257,7 +256,7 @@ void parseData()
   // check length
   if ((decodedPacketSize - HEADER_SIZE) != len)
   {
-    flashLED(4, 100);
+//    flashLED(4, 100);
     return;
   }
 
@@ -265,7 +264,7 @@ void parseData()
   int packetChecksum = crc.computeChecksum(dataPacket, decodedPacketSize - HEADER_SIZE);
   if (checksum != packetChecksum)
   {
-    flashLED(6, 100);
+//    flashLED(6, 100);
     return;
   }
 
