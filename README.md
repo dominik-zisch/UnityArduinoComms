@@ -14,6 +14,7 @@ To install ArduinoComms to your project, download the ```.unitypackage``` file f
 
 To change the compatibility level, navigate to **Edit > Project Settings > Player > Other Settings > Configuration > Api Compatibility Level** and change this setting to **.NET 4.x**
 
+[Releases]: https://github.com/dominik-zisch/UnityArduinoComms/releases
 
 ## Components
 
@@ -36,8 +37,9 @@ This component can be used to receive streaming data from the arduino. it also n
 
 ## Disclaimer
 
-The EventReceiver and PropertySender components were heavily influenced by [Keijira's OSCJack package](https://github.com/keijiro/OscJack).
+The EventReceiver and PropertySender components were heavily influenced by [Keijira's OSCJack package].
 
+[Keijira's OSCJack package]: https://github.com/keijiro/OscJack
 
 ## License
 
