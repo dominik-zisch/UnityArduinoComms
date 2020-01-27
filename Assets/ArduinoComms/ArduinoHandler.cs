@@ -69,7 +69,7 @@ public struct ArduinoBuffer
 }
 
 /// <summary>
-/// Main Arduino Handler class. Attach this to a GameObject. 
+/// Main Arduino Handler class. Attach this to a GameObject.
 /// </summary>
 public class ArduinoHandler : MonoBehaviour
 {
@@ -77,6 +77,8 @@ public class ArduinoHandler : MonoBehaviour
     public string port;                                                // Arduino serial port
     public int baudrate = 115200;                                      // Serial communication speed
     public int bufferSize = 1024;                                      // Size of input buffer
+    public bool verboseEncoded = false;
+    public bool verboseDecoded = false;
 
     [Header("Message Callback")]
     public MessageReceived OnMessageReceived;                          // Callback for Message received
@@ -90,7 +92,7 @@ public class ArduinoHandler : MonoBehaviour
     private static readonly object sendLockObject = new object();      // Lock object for thread saftey
 
     private int headerSize = 6;
-    
+
     [Serializable] public class MessageReceived : UnityEvent<ArduinoBuffer> {}
 
     // Start is called before the first frame update
@@ -98,10 +100,10 @@ public class ArduinoHandler : MonoBehaviour
     {
         stream = new SerialPort(port, baudrate);
         stream.Open();
-        
+
         receivedPackets = new Queue<ArduinoBuffer>();
         sendPackets = new Queue<byte[]>();
-        
+
         running = true;
         ReceiverThread = new Thread(ReceiveThreadDoTask);
         ReceiverThread.Start();
@@ -116,7 +118,7 @@ public class ArduinoHandler : MonoBehaviour
         stream.Close();
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -135,7 +137,7 @@ public class ArduinoHandler : MonoBehaviour
     public void DeregisterListener(UnityAction<ArduinoBuffer> call)
     {
         OnMessageReceived.RemoveListener(call);
-    }    
+    }
 
     /// <summary>
     /// Sends a packet to the arduino.
@@ -154,7 +156,7 @@ public class ArduinoHandler : MonoBehaviour
         serialPacket[3] = (byte) ((checksum >> 8) & 0xff);
         serialPacket[4] = (byte) cmd;
         serialPacket[5] = (byte) dataType;
-        
+
         Array.Copy(buffer, 0, serialPacket, headerSize, buffer.Length);
 
         // encode packet
@@ -249,7 +251,7 @@ public class ArduinoHandler : MonoBehaviour
         Send(cmd, ArduinoDataType.Float4, bytes);
     }
 
-    
+
     /// <summary>
     /// Checks if any packets have been received.
     /// </summary>
@@ -288,7 +290,7 @@ public class ArduinoHandler : MonoBehaviour
         {
             byte[] receiveBuffer = new byte[bufferSize];
             int bytesReceived = 0;
-            
+
             while (running)
             {
                 while (sendPackets.Count > 0)
@@ -300,11 +302,11 @@ public class ArduinoHandler : MonoBehaviour
                     }
                     stream.Write(serialPacket, 0, serialPacket.Length);
                 }
-                
+
                 if (stream.BytesToRead > 0)
                 {
                     int x = stream.ReadByte();
-                    
+
                     if (x == -1)
                     {
 //                        Debug.LogError("End of Stream!");
@@ -314,11 +316,38 @@ public class ArduinoHandler : MonoBehaviour
 
                     if (x == 0)
                     {
+
+                        // check if packetsize too small
+                        if (bytesReceived < headerSize)
+                        {
+                            bytesReceived = 0;
+                            continue;
+                        }
+
+                        // print
+                        if (verboseEncoded)
+                        {
+                            Debug.Log(Utils.ByteArrayToHexString(receiveBuffer));
+                        }
+
                         // decode
                         byte[] decodedBuffer = new byte[receiveBuffer.Length];
                         int decodedBufferSize = COBS.Decode(ref receiveBuffer, bytesReceived, ref decodedBuffer);
                         Array.Resize(ref decodedBuffer, decodedBufferSize);
-                        
+
+                        if (decodedBufferSize < 1)
+                        {
+                            Debug.Log(String.Format("Decoded Packet length too short. \nPacket: {0}", Utils.ByteArrayToHexString(receiveBuffer)));
+                            bytesReceived = 0;
+                            continue;
+                        }
+
+                        // print
+                        if (verboseDecoded)
+                        {
+                            Debug.Log(Utils.ByteArrayToHexString(decodedBuffer));
+                        }
+
                         // disect packt
                         int len = decodedBuffer[0] | (decodedBuffer[1] << 8);
                         int checksum = decodedBuffer[2] | (decodedBuffer[3] << 8);
@@ -330,20 +359,22 @@ public class ArduinoHandler : MonoBehaviour
                         // check length
                         if (dataPacket.Length != len)
                         {
+                            bytesReceived = 0;
                             Debug.Log(String.Format("Invalid Packet Length. Want: {0} - Have: {1}", len, dataPacket.Length));
                             continue;
                         }
-                        
+
                         // checksum
                         int packetChecksum = Crc16.ComputeChecksum(dataPacket);
                         if (checksum != packetChecksum)
                         {
+                            bytesReceived = 0;
                             Debug.Log(String.Format("Invalid Checksum. Want: {0} - Have: {1}", checksum, packetChecksum));
                             continue;
                         }
 
                         bytesReceived = 0;
-                        
+
                         // store in queue
                         lock (receiveLockObject)
                         {
