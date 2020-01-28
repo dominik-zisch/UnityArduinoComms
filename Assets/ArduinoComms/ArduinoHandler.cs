@@ -100,8 +100,6 @@ public class ArduinoHandler : MonoBehaviour
 
     private int headerSize = 6;
 
-    private float timer = 0;
-
     [Serializable] public class MessageReceived : UnityEvent<ArduinoBuffer> {}
 
     // Start is called before the first frame update
@@ -125,15 +123,12 @@ public class ArduinoHandler : MonoBehaviour
         running = false;
         ReceiverThread.Abort();
         stream.Close();
-        
-        Debug.Log(String.Format("{0} Packets in {1} seconds: {2} Packers per seconds", packetsWaiting, timer, (float)packetsWaiting/timer));
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
         packetsWaiting = PacketsAvailable();
         
         while (PacketsAvailable() > 0)
