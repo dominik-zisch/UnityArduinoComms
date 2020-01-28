@@ -4,14 +4,41 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-
-    [SerializeField] private float someFloat;
-
-    public float SomeFloat
+    public bool ArduinoSendData
     {
-        get => someFloat;
-        set => someFloat = value;
+        get => arduinoSendData;
+        set => arduinoSendData = value;
     }
+
+    public bool ArduinoSendDataCheck
+    {
+        get => arduinoSendDataCheck;
+        set => arduinoSendDataCheck = value;
+    }
+
+    public float AppleVal
+    {
+        get => appleVal;
+        set => appleVal = value;
+    }
+
+    public float BananaVal
+    {
+        get => bananaVal;
+        set => bananaVal = value;
+    }
+
+    public float OrangeVal
+    {
+        get => orangeVal;
+        set => orangeVal = value;
+    }
+    
+    [SerializeField] private bool arduinoSendData = false;
+    [SerializeField] private bool arduinoSendDataCheck = false;
+    [SerializeField] private float appleVal;
+    [SerializeField] private float bananaVal;
+    [SerializeField] private float orangeVal;
 
     // Start is called before the first frame update
     void Start()
@@ -23,5 +50,12 @@ public class TestScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setVector3(Vector3 data)
+    {
+        appleVal = data.x;
+        bananaVal = data.y;
+        orangeVal = data.z;
     }
 }

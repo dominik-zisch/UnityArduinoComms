@@ -77,8 +77,15 @@ public class ArduinoHandler : MonoBehaviour
     public string port;                                                // Arduino serial port
     public int baudrate = 115200;                                      // Serial communication speed
     public int bufferSize = 1024;                                      // Size of input buffer
-    public bool verboseEncoded = false;
-    public bool verboseDecoded = false;
+    
+    [Header("Receive Debug")]
+    public int packetsWaiting;
+    public bool verboseEncodedReceive = false;
+    public bool verboseDecodedReceive = false;
+    
+    [Header("Send Debug")]
+    public bool verboseEncodedSend = false;
+    public bool verboseDecodedSend = false;
 
     [Header("Message Callback")]
     public MessageReceived OnMessageReceived;                          // Callback for Message received
@@ -92,6 +99,8 @@ public class ArduinoHandler : MonoBehaviour
     private static readonly object sendLockObject = new object();      // Lock object for thread saftey
 
     private int headerSize = 6;
+
+    private float timer = 0;
 
     [Serializable] public class MessageReceived : UnityEvent<ArduinoBuffer> {}
 
@@ -116,13 +125,18 @@ public class ArduinoHandler : MonoBehaviour
         running = false;
         ReceiverThread.Abort();
         stream.Close();
+        
+        Debug.Log(String.Format("{0} Packets in {1} seconds: {2} Packers per seconds", packetsWaiting, timer, (float)packetsWaiting/timer));
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (PacketsAvailable() > 0)
+        timer += Time.deltaTime;
+        packetsWaiting = PacketsAvailable();
+        
+        while (PacketsAvailable() > 0)
         {
             ArduinoBuffer packet = GetReceivedPacket();
             OnMessageReceived.Invoke(packet);
@@ -158,13 +172,18 @@ public class ArduinoHandler : MonoBehaviour
         serialPacket[5] = (byte) dataType;
 
         Array.Copy(buffer, 0, serialPacket, headerSize, buffer.Length);
+        
+        if (verboseDecodedSend)
+        {
+            Debug.Log(String.Format("Decoded Send Packet: {0}", Utils.ByteArrayToHexString(serialPacket)));
+        }
 
         // encode packet
         byte[] encodedBuffer = new byte[COBS.GetEncodedBufferSize(serialPacket.Length)];
         int encodedBufferSize = COBS.Encode(ref serialPacket, serialPacket.Length, ref encodedBuffer);
         Array.Resize(ref encodedBuffer, encodedBufferSize + 1);
         encodedBuffer[encodedBufferSize] = 0;
-
+        
         // add msg to outgoing queue
         lock (sendLockObject)
         {
@@ -296,10 +315,18 @@ public class ArduinoHandler : MonoBehaviour
                 while (sendPackets.Count > 0)
                 {
                     byte[] serialPacket;
+                    
                     lock (sendLockObject)
                     {
                         serialPacket = sendPackets.Dequeue();
                     }
+                    
+                    // print
+                    if (verboseEncodedSend)
+                    {
+                        Debug.Log(String.Format("Encoded Send Packet: {0}", Utils.ByteArrayToHexString(serialPacket)));
+                    }
+                    
                     stream.Write(serialPacket, 0, serialPacket.Length);
                 }
 
@@ -325,9 +352,9 @@ public class ArduinoHandler : MonoBehaviour
                         }
 
                         // print
-                        if (verboseEncoded)
+                        if (verboseEncodedReceive)
                         {
-                            Debug.Log(Utils.ByteArrayToHexString(receiveBuffer));
+                            Debug.Log(String.Format("Encoded Receive Packet: {0}", Utils.ByteArrayToHexString(receiveBuffer)));
                         }
 
                         // decode
@@ -343,9 +370,9 @@ public class ArduinoHandler : MonoBehaviour
                         }
 
                         // print
-                        if (verboseDecoded)
+                        if (verboseDecodedReceive)
                         {
-                            Debug.Log(Utils.ByteArrayToHexString(decodedBuffer));
+                            Debug.Log(String.Format("Decoded Receive Packet: {0}", Utils.ByteArrayToHexString(decodedBuffer)));
                         }
 
                         // disect packt

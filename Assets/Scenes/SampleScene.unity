@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,7 +130,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5563025}
   - component: {fileID: 5563024}
+  - component: {fileID: 5563027}
+  - component: {fileID: 5563026}
+  - component: {fileID: 5563028}
+  - component: {fileID: 5563030}
   - component: {fileID: 5563023}
+  - component: {fileID: 5563029}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -150,7 +155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab16b911b585a46d5be1e7605417ca71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  someFloat: 0
+  arduinoSendData: 0
+  arduinoSendDataCheck: 0
+  appleVal: 0
+  bananaVal: 0
+  orangeVal: 0
 --- !u!114 &5563024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +167,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5563022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 254c4b6aae329431299a410f720b820c, type: 3}
   m_Name: 
@@ -179,7 +188,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5563023}
-        m_MethodName: set_SomeFloat
+        m_MethodName: set_AppleVal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -221,6 +230,247 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5563026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563022}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254c4b6aae329431299a410f720b820c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arduino: {fileID: 1641259767}
+  _command: 4
+  _dataType: 4
+  _bytesReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _boolReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _intReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _floatReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5563023}
+        m_MethodName: set_OrangeVal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _stringReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _int2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _int3Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float3Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float4Received:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5563027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563022}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254c4b6aae329431299a410f720b820c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arduino: {fileID: 1641259767}
+  _command: 3
+  _dataType: 4
+  _bytesReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _boolReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _intReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _floatReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5563023}
+        m_MethodName: set_BananaVal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _stringReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _int2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _int3Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float3Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float4Received:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5563028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254c4b6aae329431299a410f720b820c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arduino: {fileID: 1641259767}
+  _command: 2
+  _dataType: 9
+  _bytesReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _boolReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _intReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _floatReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _stringReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _int2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _int3Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float3Received:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5563023}
+        m_MethodName: setVector3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _float4Received:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5563029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3808a2d25ef4a32983edb98792f6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arduino: {fileID: 1641259767}
+  _framerate: 1
+  _command: 1
+  _dataSource: {fileID: 5563023}
+  _propertyName: ArduinoSendData
+--- !u!114 &5563030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254c4b6aae329431299a410f720b820c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arduino: {fileID: 1641259767}
+  _command: 1
+  _dataType: 2
+  _bytesReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _boolReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5563023}
+        m_MethodName: set_ArduinoSendDataCheck
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _intReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _floatReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _stringReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  _int2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _int3Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float2Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float3Received:
+    m_PersistentCalls:
+      m_Calls: []
+  _float4Received:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,11 +924,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0acc79ee975f4d9887b1231fb122aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  port: /dev/cu.usbmodem14701
+  port: /dev/cu.usbmodem144201
   baudrate: 115200
   bufferSize: 1024
-  verboseEncoded: 0
-  verboseDecoded: 1
+  packetsWaiting: 0
+  verboseEncodedReceive: 0
+  verboseDecodedReceive: 0
+  verboseEncodedSend: 0
+  verboseDecodedSend: 0
   OnMessageReceived:
     m_PersistentCalls:
       m_Calls: []
