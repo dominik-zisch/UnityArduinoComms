@@ -99,7 +99,7 @@ public class ArduinoHandler : MonoBehaviour
     private static readonly object sendLockObject = new object();      // Lock object for thread saftey
 
     private int headerSize = 6;
-    private float startupTimer = 2f;
+    public float startupTimer = 2f;
 
     [Serializable] public class MessageReceived : UnityEvent<ArduinoBuffer> {}
 
@@ -108,7 +108,6 @@ public class ArduinoHandler : MonoBehaviour
     {
         stream = new SerialPort(port, baudrate);
         stream.Open();
-        
 
         receivedPackets = new Queue<ArduinoBuffer>();
         sendPackets = new Queue<byte[]>();
@@ -116,6 +115,43 @@ public class ArduinoHandler : MonoBehaviour
         running = true;
         ReceiverThread = new Thread(ReceiveThreadDoTask);
         ReceiverThread.Start();
+
+        int cmd = 99;
+        ArduinoDataType dataType = ArduinoDataType.Int;
+        byte[] buffer = BitConverter.GetBytes(99);
+
+        for (int i = 0; i < 5; i++)
+        {
+            // build serial packet
+            int checksum = Crc16.ComputeChecksum(buffer);
+            byte[] serialPacket = new byte[buffer.Length + headerSize];
+
+            serialPacket[0] = (byte)(buffer.Length & 0xff);
+            serialPacket[1] = (byte)((buffer.Length >> 8) & 0xff);
+            serialPacket[2] = (byte)(checksum & 0xff);
+            serialPacket[3] = (byte)((checksum >> 8) & 0xff);
+            serialPacket[4] = (byte)cmd;
+            serialPacket[5] = (byte)dataType;
+
+            Array.Copy(buffer, 0, serialPacket, headerSize, buffer.Length);
+
+            if (verboseDecodedSend)
+            {
+                Debug.Log(String.Format("Decoded Send Packet: {0}", Utils.ByteArrayToHexString(serialPacket)));
+            }
+
+            // encode packet
+            byte[] encodedBuffer = new byte[COBS.GetEncodedBufferSize(serialPacket.Length)];
+            int encodedBufferSize = COBS.Encode(ref serialPacket, serialPacket.Length, ref encodedBuffer);
+            Array.Resize(ref encodedBuffer, encodedBufferSize + 1);
+            encodedBuffer[encodedBufferSize] = 0;
+
+            // add msg to outgoing queue
+            lock (sendLockObject)
+            {
+                sendPackets.Enqueue(encodedBuffer);
+            }
+        }
     }
 
 

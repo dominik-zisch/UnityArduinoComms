@@ -89,7 +89,7 @@ public class ArduinoEventReceiver : MonoBehaviour
         }
         else if (_dataType == ArduinoDataType.Int)
         {
-            int i = BitConverter.ToInt32(data.buffer, 0);
+            int i = BitConverter.ToInt16(data.buffer, 0);
             _intReceived.Invoke(i);
         }
         else if (_dataType == ArduinoDataType.Float)
@@ -105,16 +105,16 @@ public class ArduinoEventReceiver : MonoBehaviour
         else if (_dataType == ArduinoDataType.Int2)
         {
             Vector2Int v = new Vector2Int(
-                BitConverter.ToInt32(data.buffer, 0),
-                BitConverter.ToInt32(data.buffer, 4));
+                BitConverter.ToInt16(data.buffer, 0),
+                BitConverter.ToInt16(data.buffer, 4));
             _int2Received.Invoke(v);
         }
         else if (_dataType == ArduinoDataType.Int3)
         {
             Vector3Int v = new Vector3Int(
-                BitConverter.ToInt32(data.buffer, 0),
-                BitConverter.ToInt32(data.buffer, 4),
-                BitConverter.ToInt32(data.buffer, 8));
+                BitConverter.ToInt16(data.buffer, 0),
+                BitConverter.ToInt16(data.buffer, 4),
+                BitConverter.ToInt16(data.buffer, 8));
             _int3Received.Invoke(v);
         }
         else if (_dataType == ArduinoDataType.Vector2)
