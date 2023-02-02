@@ -37,6 +37,11 @@ typedef union                       // Used for float to byte conversion
 //  09 - float3
 //  10 - float4
 
+void onIntReceived(int cmd, int32_t value)
+{
+  sendInt(cmd, value);
+}
+
 //============================================================================//
 //========================================================// Serial Declarations
 
@@ -44,6 +49,8 @@ int bytesReceived = 0;                        // number of bytes received
 const uint8_t packetMarker = (uint8_t) 0x00;  // packet marker
 uint8_t inputBuffer[PACKET_SIZE];             // buffer to store input
 Crc16 crc;                                    // CRC algorithm for checksum
+
+void (*intCallback)(int, int32_t);
 
 
 //============================================================================//
@@ -57,7 +64,8 @@ void setup()
   Serial.begin(BAUDRATE);
   pinMode(LED_BUILTIN, OUTPUT);
 
-  flashLED(8, 100);
+  intCallback = &onIntReceived;
+  flashLED(2, 100);
 }
 
 
@@ -268,8 +276,9 @@ void parseData()
     return;
   }
 
+
   // echo msg back - remove this and add your own implementation below
-  sendPacket(cmd, dataType, dataPacket, decodedPacketSize - HEADER_SIZE);
+//  sendPacket(cmd, dataType, dataPacket, decodedPacketSize - HEADER_SIZE);
 
   // deal with data here. don't forget about the command byte!
   switch (dataType)
@@ -290,7 +299,7 @@ void parseData()
     case 3: // int
     {
       int32_t i = getIntFromBuf(dataPacket, 0);
-      // use the integer here
+      intCallback(cmd, i);
     }
       break;
     case 4: // float
