@@ -3,6 +3,7 @@
 UnityComms::UnityComms () {}
 
 void UnityComms::setup() {
+  Serial.begin(BAUDRATE);
   pinMode(LED_BUILTIN, OUTPUT);
   flashLED(2, 100);
 }
@@ -54,9 +55,6 @@ void UnityComms::sendFloat(int cmd, float f)
   sendPacket(cmd, 4, buffer, 4);
 }
 
-
-//--------------------------------------------------------//
-//--------------------------------------------// Send String
 void UnityComms::sendString(int cmd, String s)
 {
   int len = s.length() + 1;
@@ -65,23 +63,6 @@ void UnityComms::sendString(int cmd, String s)
   s.toCharArray(sc, len);
 
   sendPacket(cmd, 5, (uint8_t*)sc, len);
-}
-
-void UnityComms::sendInt2(int cmd, long i1, long i2)
-{
-  uint8_t buffer[8];
-  copyIntToBuf(i1, buffer, 0);
-  copyIntToBuf(i2, buffer, 4);
-  sendPacket(cmd, 6, buffer, 8);
-}
-
-void UnityComms::sendInt3(int cmd, long i1, long i2, long i3)
-{
-  uint8_t buffer[12];
-  copyIntToBuf(i1, buffer, 0);
-  copyIntToBuf(i2, buffer, 4);
-  copyIntToBuf(i3, buffer, 8);
-  sendPacket(cmd, 7, buffer, 12);
 }
 
 void UnityComms::sendVector2(int cmd, float f1, float f2)
@@ -111,7 +92,22 @@ void UnityComms::sendVector4(int cmd, float f1, float f2, float f3, float f4)
   sendPacket(cmd, 10, buffer, 16);
 }
 
+void UnityComms::sendVector2Int(int cmd, long i1, long i2)
+{
+  uint8_t buffer[8];
+  copyIntToBuf(i1, buffer, 0);
+  copyIntToBuf(i2, buffer, 4);
+  sendPacket(cmd, 6, buffer, 8);
+}
 
+void UnityComms::sendVector3Int(int cmd, long i1, long i2, long i3)
+{
+  uint8_t buffer[12];
+  copyIntToBuf(i1, buffer, 0);
+  copyIntToBuf(i2, buffer, 4);
+  copyIntToBuf(i3, buffer, 8);
+  sendPacket(cmd, 7, buffer, 12);
+}
 
 void UnityComms::receive()
 {
@@ -159,7 +155,6 @@ void UnityComms::parseData()
   // check length
   if ((decodedPacketSize - HEADER_SIZE) != len)
   {
-    //    flashLED(4, 100);
     return;
   }
 
@@ -167,15 +162,8 @@ void UnityComms::parseData()
   int packetChecksum = crc.computeChecksum(dataPacket, decodedPacketSize - HEADER_SIZE);
   if (checksum != packetChecksum)
   {
-    //    flashLED(6, 100);
     return;
   }
-
-  // echo msg back - remove this and add your own implementation below
-  //  sendPacket(cmd, dataType, dataPacket, decodedPacketSize - HEADER_SIZE);
-
-  // size_t packetLen = decodedPacketSize - HEADER_SIZE;
-  // callbackFunc(cmd, dataType, dataPacket, packetLen);
 
   // deal with data here. don't forget about the command byte!
   switch (dataType)
@@ -215,7 +203,7 @@ void UnityComms::parseData()
    {
      int32_t i1 = getIntFromBuf(dataPacket, 0);
      int32_t i2 = getIntFromBuf(dataPacket, 4);
-     int2Callback(cmd, i1, i2);
+     vector2IntCallback(cmd, i1, i2);
    }
      break;
    case 7: // int3
@@ -223,7 +211,7 @@ void UnityComms::parseData()
      int32_t i1 = getIntFromBuf(dataPacket, 0);
      int32_t i2 = getIntFromBuf(dataPacket, 4);
      int32_t i3 = getIntFromBuf(dataPacket, 8);
-     int3Callback(cmd, i1, i2, i3);
+     vector3IntCallback(cmd, i1, i2, i3);
    }
      break;
    case 8: // float2
@@ -254,9 +242,6 @@ void UnityComms::parseData()
      break;
   }
 }
-
-
-
 
 void UnityComms::flashLED(int n, int d) {
   for (int i = 0; i < n; i++) {

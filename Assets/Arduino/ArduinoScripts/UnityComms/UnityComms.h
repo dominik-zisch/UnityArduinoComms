@@ -4,6 +4,7 @@
 #include "COBS.h"
 #include "Crc16.h"
 
+#define BAUDRATE 115200             //Data Speed
 #define HEADER_SIZE 6
 #define PACKET_SIZE 512            // Input Packet size
 
@@ -17,14 +18,13 @@ class UnityComms {
 
   public:
 
-    void (*callbackFunc)(int, int, uint8_t*, size_t);
     void (*bytesCallback)(int, uint8_t*, size_t);
     void (*boolCallback)(int, bool);
     void (*intCallback)(int, int32_t);
     void (*floatCallback)(int, float);
     void (*stringCallback)(int, String);
-    void (*int2Callback)(int, int32_t, int32_t);
-    void (*int3Callback)(int, int32_t, int32_t, int32_t);
+    void (*vector2IntCallback)(int, int32_t, int32_t);
+    void (*vector3IntCallback)(int, int32_t, int32_t, int32_t);
     void (*vector2Callback)(int, float, float);
     void (*vector3Callback)(int, float, float, float);
     void (*vector4Callback)(int, float, float, float, float);
@@ -37,11 +37,12 @@ class UnityComms {
     void sendInt(int cmd, long i);
     void sendFloat(int cmd, float f);
     void sendString(int cmd, String s);
-    void sendInt2(int cmd, long i1, long i2);
-    void sendInt3(int cmd, long i1, long i2, long i3);
     void sendVector2(int cmd, float f1, float f2);
     void sendVector3(int cmd, float f1, float f2, float f3);
     void sendVector4(int cmd, float f1, float f2, float f3, float f4);
+    void sendVector2Int(int cmd, long i1, long i2);
+    void sendVector3Int(int cmd, long i1, long i2, long i3);
+
     void sendPacket(int cmd, int dataType, uint8_t* buffer, size_t len);
 
     bool getBoolFromBuf(uint8_t* buffer, int offset);
