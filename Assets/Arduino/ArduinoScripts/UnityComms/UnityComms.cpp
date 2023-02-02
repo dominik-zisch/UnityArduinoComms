@@ -4,7 +4,7 @@ UnityComms::UnityComms () {}
 
 void UnityComms::setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  flashLED(4, 100);
+  flashLED(2, 100);
 }
 
 void UnityComms::sendPacket(int cmd, int dataType, uint8_t* buffer, size_t len)
@@ -174,8 +174,85 @@ void UnityComms::parseData()
   // echo msg back - remove this and add your own implementation below
   //  sendPacket(cmd, dataType, dataPacket, decodedPacketSize - HEADER_SIZE);
 
-  size_t packetLen = decodedPacketSize - HEADER_SIZE;
-  callbackFunc(cmd, dataType, dataPacket, packetLen);
+  // size_t packetLen = decodedPacketSize - HEADER_SIZE;
+  // callbackFunc(cmd, dataType, dataPacket, packetLen);
+
+  // deal with data here. don't forget about the command byte!
+  switch (dataType)
+  {
+   case 1: // ByteArray
+   {
+     uint8_t* bytes = dataPacket;
+     size_t bytesLen = decodedPacketSize - HEADER_SIZE;
+     bytesCallback(cmd, bytes, bytesLen);
+   }
+     break;
+   case 2: // bool
+   {
+     bool b = getBoolFromBuf(dataPacket, 0);
+     boolCallback(cmd, b);
+   }
+     break;
+   case 3: // int
+   {
+     int32_t i = getIntFromBuf(dataPacket, 0);
+     intCallback(cmd, i);
+   }
+     break;
+   case 4: // float
+   {
+     float f = getFloatFromBuf(dataPacket, 0);
+     floatCallback(cmd, f);
+   }
+     break;
+   case 5: // string
+   {
+     char* string = (char*) dataPacket;
+     stringCallback(cmd, string);
+   }
+     break;
+   case 6: // int2
+   {
+     int32_t i1 = getIntFromBuf(dataPacket, 0);
+     int32_t i2 = getIntFromBuf(dataPacket, 4);
+     int2Callback(cmd, i1, i2);
+   }
+     break;
+   case 7: // int3
+   {
+     int32_t i1 = getIntFromBuf(dataPacket, 0);
+     int32_t i2 = getIntFromBuf(dataPacket, 4);
+     int32_t i3 = getIntFromBuf(dataPacket, 8);
+     int3Callback(cmd, i1, i2, i3);
+   }
+     break;
+   case 8: // float2
+   {
+     float f1 = getFloatFromBuf(dataPacket, 0);
+     float f2 = getFloatFromBuf(dataPacket, 4);
+     vector2Callback(cmd, f1, f2);
+   }
+     break;
+   case 9: // float3
+   {
+     float f1 = getFloatFromBuf(dataPacket, 0);
+     float f2 = getFloatFromBuf(dataPacket, 4);
+     float f3 = getFloatFromBuf(dataPacket, 8);
+     vector3Callback(cmd, f1, f2, f3);
+   }
+     break;
+   case 10: // float4
+   {
+     float f1 = getFloatFromBuf(dataPacket, 0);
+     float f2 = getFloatFromBuf(dataPacket, 4);
+     float f3 = getFloatFromBuf(dataPacket, 8);
+     float f4 = getFloatFromBuf(dataPacket, 12);
+     vector4Callback(cmd, f1, f2, f3, f4);
+   }
+     break;
+   default:
+     break;
+  }
 }
 
 

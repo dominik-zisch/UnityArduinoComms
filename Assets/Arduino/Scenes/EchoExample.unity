@@ -639,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3039209906180233039, guid: db034541ba6d5495abc702e531306a6d, type: 3}
       propertyPath: port
-      value: /dev/cu.usbserial-230
+      value: /dev/cu.usbmodem1434101
       objectReference: {fileID: 0}
     - target: {fileID: 3039209906180233039, guid: db034541ba6d5495abc702e531306a6d, type: 3}
       propertyPath: startupTimer

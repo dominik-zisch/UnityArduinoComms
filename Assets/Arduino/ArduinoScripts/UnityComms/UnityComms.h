@@ -18,6 +18,16 @@ class UnityComms {
   public:
 
     void (*callbackFunc)(int, int, uint8_t*, size_t);
+    void (*bytesCallback)(int, uint8_t*, size_t);
+    void (*boolCallback)(int, bool);
+    void (*intCallback)(int, int32_t);
+    void (*floatCallback)(int, float);
+    void (*stringCallback)(int, String);
+    void (*int2Callback)(int, int32_t, int32_t);
+    void (*int3Callback)(int, int32_t, int32_t, int32_t);
+    void (*vector2Callback)(int, float, float);
+    void (*vector3Callback)(int, float, float, float);
+    void (*vector4Callback)(int, float, float, float, float);
 
     UnityComms ();
 
