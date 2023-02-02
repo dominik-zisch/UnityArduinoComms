@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _arduino: {fileID: 56326993}
   _command: 1
-  _dataType: 3
+  _dataType: 1
   _bytesReceived:
     m_PersistentCalls:
       m_Calls:
@@ -518,10 +518,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arduino: {fileID: 56326993}
-  _framerate: 1
+  _framerate: 30
   _command: 1
   _dataSource: {fileID: 2104468730}
-  _propertyName: SendInt
+  _propertyName: SendBytes
 --- !u!114 &2104468729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4c53ee8b6b74e61aa1c77731d006cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendBytes: 
+  sendBytes: 0102
   sendBool: 0
   sendInt: 2
   sendFloat: 0
@@ -639,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3039209906180233039, guid: db034541ba6d5495abc702e531306a6d, type: 3}
       propertyPath: port
-      value: COM7
+      value: /dev/cu.usbserial-230
       objectReference: {fileID: 0}
     - target: {fileID: 3039209906180233039, guid: db034541ba6d5495abc702e531306a6d, type: 3}
       propertyPath: startupTimer

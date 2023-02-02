@@ -37,10 +37,16 @@ typedef union                       // Used for float to byte conversion
 //  09 - float3
 //  10 - float4
 
-void onIntReceived(int cmd, int32_t value)
-{
-  sendInt(cmd, value);
-}
+void onBytesReceived   (int cmd, uint8_t* value, size_t len)                             { sendBytes(cmd, value, len); }
+void onBoolReceived    (int cmd, bool value)                                             { sendBool(cmd, value); }
+void onIntReceived     (int cmd, int32_t value)                                          { sendInt(cmd, value); }
+void onFloatReceived   (int cmd, float value)                                            { sendFloat(cmd, value); }
+void onStringReceived  (int cmd, String value)                                           { sendString(cmd, value); }
+void onInt2Received    (int cmd, int32_t value1, int32_t value2)                         { sendInt2(cmd, value1, value2); }
+void onInt3Received    (int cmd, int32_t value1, int32_t value2, int32_t value3)         { sendInt3(cmd, value1, value2, value3); }
+void onVector2Received (int cmd, float value1, float value2)                             { sendVector2(cmd, value1, value2); }
+void onVector3Received (int cmd, float value1, float value2, float value3)               { sendVector3(cmd, value1, value2, value3); }
+void onVector4Received (int cmd, float value1, float value2, float value3, float value4) { sendVector4(cmd, value1, value2, value3, value4); }
 
 //============================================================================//
 //========================================================// Serial Declarations
@@ -50,7 +56,16 @@ const uint8_t packetMarker = (uint8_t) 0x00;  // packet marker
 uint8_t inputBuffer[PACKET_SIZE];             // buffer to store input
 Crc16 crc;                                    // CRC algorithm for checksum
 
+void (*bytesCallback)(int, uint8_t*, size_t);
+void (*boolCallback)(int, bool);
 void (*intCallback)(int, int32_t);
+void (*floatCallback)(int, float);
+void (*stringCallback)(int, String);
+void (*int2Callback)(int, int32_t, int32_t);
+void (*int3Callback)(int, int32_t, int32_t, int32_t);
+void (*vector2Callback)(int, float, float);
+void (*vector3Callback)(int, float, float, float);
+void (*vector4Callback)(int, float, float, float, float);
 
 
 //============================================================================//
@@ -64,7 +79,17 @@ void setup()
   Serial.begin(BAUDRATE);
   pinMode(LED_BUILTIN, OUTPUT);
 
+  bytesCallback = &onBytesReceived;
+  boolCallback = &onBoolReceived;
   intCallback = &onIntReceived;
+  floatCallback = &onFloatReceived;
+  stringCallback = &onStringReceived;
+  int2Callback = &onInt2Received;
+  int3Callback = &onInt3Received;
+  vector2Callback = &onVector2Received;
+  vector3Callback = &onVector3Received;
+  vector4Callback = &onVector4Received;
+  
   flashLED(2, 100);
 }
 
@@ -123,9 +148,14 @@ void sendFloat(int cmd, float f)
 
 //--------------------------------------------------------//
 //--------------------------------------------// Send String
-void sendString(int cmd, uint8_t* s, size_t len)
+void sendString(int cmd, String s)
 {
-  sendPacket(cmd, 5, s, len);
+  int len = s.length() + 1;
+
+  char sc[len];
+  s.toCharArray(sc, len);
+
+  sendPacket(cmd, 5, (uint8_t*)sc, len);
 }
 
 
@@ -276,7 +306,6 @@ void parseData()
     return;
   }
 
-
   // echo msg back - remove this and add your own implementation below
 //  sendPacket(cmd, dataType, dataPacket, decodedPacketSize - HEADER_SIZE);
 
@@ -287,13 +316,13 @@ void parseData()
     {
       uint8_t* bytes = dataPacket;
       size_t bytesLen = decodedPacketSize - HEADER_SIZE;
-      // use the byte array here
+      bytesCallback(cmd, bytes, bytesLen);
     }
       break;
     case 2: // bool
     {
       bool b = getBoolFromBuf(dataPacket, 0);
-      // use the boolean here
+      boolCallback(cmd, b);
     }
       break;
     case 3: // int
@@ -305,20 +334,20 @@ void parseData()
     case 4: // float
     {
       float f = getFloatFromBuf(dataPacket, 0);
-      // use the float here
+      floatCallback(cmd, f);
     }
       break;
     case 5: // string
     {
       char* string = (char*) dataPacket;
-      // use the string here
+      stringCallback(cmd, string);
     }
       break;
     case 6: // int2
     {
       int32_t i1 = getIntFromBuf(dataPacket, 0);
       int32_t i2 = getIntFromBuf(dataPacket, 4);
-      // use the integers here
+      int2Callback(cmd, i1, i2);
     }
       break;
     case 7: // int3
@@ -326,14 +355,14 @@ void parseData()
       int32_t i1 = getIntFromBuf(dataPacket, 0);
       int32_t i2 = getIntFromBuf(dataPacket, 4);
       int32_t i3 = getIntFromBuf(dataPacket, 8);
-      // use the integers here
+      int3Callback(cmd, i1, i2, i3);
     }
       break;
     case 8: // float2
     {
       float f1 = getFloatFromBuf(dataPacket, 0);
       float f2 = getFloatFromBuf(dataPacket, 4);
-      // use the floats here
+      vector2Callback(cmd, f1, f2);
     }
       break;
     case 9: // float3
@@ -341,7 +370,7 @@ void parseData()
       float f1 = getFloatFromBuf(dataPacket, 0);
       float f2 = getFloatFromBuf(dataPacket, 4);
       float f3 = getFloatFromBuf(dataPacket, 8);
-      // use the floats here
+      vector3Callback(cmd, f1, f2, f3);
     }
       break;
     case 10: // float4
@@ -350,7 +379,7 @@ void parseData()
       float f2 = getFloatFromBuf(dataPacket, 4);
       float f3 = getFloatFromBuf(dataPacket, 8);
       float f4 = getFloatFromBuf(dataPacket, 12);
-      // use the floats here
+      vector4Callback(cmd, f1, f2, f3, f4);
     }
       break;
     default:
