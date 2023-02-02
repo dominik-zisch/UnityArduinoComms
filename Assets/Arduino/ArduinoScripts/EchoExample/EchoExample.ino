@@ -30,7 +30,7 @@ typedef union                       // Used for float to byte conversion
 //  02 - bool
 //  03 - int
 //  04 - float
-//  05 - string
+//  05 - string 
 //  06 - int2
 //  07 - int3
 //  08 - float2
@@ -95,7 +95,7 @@ void sendBool(int cmd, bool b)
 
 //--------------------------------------------------------//
 //-------------------------------------------// Send Integer
-void sendInt(int cmd, int i)
+void sendInt(int cmd, int32_t i)
 {
   uint8_t buffer[4];
   copyIntToBuf(i, buffer, 0);
@@ -123,7 +123,7 @@ void sendString(int cmd, uint8_t* s, size_t len)
 
 //--------------------------------------------------------//
 //----------------------------------------// Send 2 Integers
-void sendInt2(int cmd, int i1, int i2)
+void sendInt2(int cmd, int32_t i1, int32_t i2)
 {
   uint8_t buffer[8];
   copyIntToBuf(i1, buffer, 0);
@@ -134,7 +134,7 @@ void sendInt2(int cmd, int i1, int i2)
 
 //--------------------------------------------------------//
 //----------------------------------------// Send 3 Integers
-void sendInt3(int cmd, int i1, int i2, int i3)
+void sendInt3(int cmd, int32_t i1, int32_t i2, int32_t i3)
 {
   uint8_t buffer[12];
   copyIntToBuf(i1, buffer, 0);
@@ -289,7 +289,7 @@ void parseData()
       break;
     case 3: // int
     {
-      int i = getIntFromBuf(dataPacket, 0);
+      int32_t i = getIntFromBuf(dataPacket, 0);
       // use the integer here
     }
       break;
@@ -307,16 +307,16 @@ void parseData()
       break;
     case 6: // int2
     {
-      int i1 = getIntFromBuf(dataPacket, 0);
-      int i2 = getIntFromBuf(dataPacket, 4);
+      int32_t i1 = getIntFromBuf(dataPacket, 0);
+      int32_t i2 = getIntFromBuf(dataPacket, 4);
       // use the integers here
     }
       break;
     case 7: // int3
     {
-      int i1 = getIntFromBuf(dataPacket, 0);
-      int i2 = getIntFromBuf(dataPacket, 4);
-      int i3 = getIntFromBuf(dataPacket, 8);
+      int32_t i1 = getIntFromBuf(dataPacket, 0);
+      int32_t i2 = getIntFromBuf(dataPacket, 4);
+      int32_t i3 = getIntFromBuf(dataPacket, 8);
       // use the integers here
     }
       break;
@@ -378,7 +378,7 @@ void copyBoolToBuf(bool val, uint8_t* buffer, int offset)
 
 //--------------------------------------------------------//
 //-------------------------------------// Copy int to buffer
-void copyIntToBuf(int val, uint8_t* buffer, int offset)
+void copyIntToBuf(int32_t val, uint8_t* buffer, int offset)
 {
   byte* b = (byte*) &val;
   memcpy(buffer + offset, b, 4);
@@ -403,11 +403,11 @@ bool getBoolFromBuf(uint8_t* buffer, int offset) {
 
 //--------------------------------------------------------//
 //--------------------------------// Get integer from buffer
-int getIntFromBuf(uint8_t* buffer, int offset) {
+int32_t getIntFromBuf(uint8_t* buffer, int offset) {
   return buffer[offset] |
-         (buffer[offset + 1] << 8);/* |
+         (buffer[offset + 1] << 8) |
          (buffer[offset + 2] << 16) |
-         (buffer[offset + 3] << 24);*/
+         (buffer[offset + 3] << 24);
 }
 
 
